@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sfwrms.sfwrms.ReportController"
+      spacing="18" style="-fx-background-color: #f5f5f5; -fx-padding: 40;">
+
+    <!-- Top bar: Back button + Title -->
+    <HBox spacing="16" alignment="CENTER_LEFT">
+        <Button fx:id="btnBack" text="← Back to Dashboard" onAction="#handleBack"
+                prefHeight="36"
+                style="-fx-background-color: #1a5276; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+        <Label text="📊 Sustainability Report"
+               style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+    </HBox>
+    <Separator/>
+
+    <!-- Period selection -->
+    <HBox spacing="16" alignment="CENTER_LEFT">
+        <Label text="Report Period:" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+        <ComboBox fx:id="cbPeriod" prefWidth="160"/>
+        <Button text="Generate" onAction="#handleGenerate"
+                prefWidth="120" prefHeight="36"
+                style="-fx-background-color: #8e44ad; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Summary Stats Boxes -->
+    <HBox spacing="20" alignment="CENTER">
+        <!-- Total Donations Box -->
+        <VBox style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 180;" alignment="CENTER">
+            <Label text="Total Donations" style="-fx-font-size: 14; -fx-text-fill: white;"/>
+            <Label fx:id="lblTotal" text="—" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+        
+        <!-- Delivered Donations Box -->
+        <VBox style="-fx-background-color: #27ae60; -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 180;" alignment="CENTER">
+            <Label text="Delivered" style="-fx-font-size: 14; -fx-text-fill: white;"/>
+            <Label fx:id="lblDelivered" text="—" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+        
+        <!-- Total Meals Saved Box -->
+        <VBox style="-fx-background-color: #e67e22; -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 180;" alignment="CENTER">
+            <Label text="Meals Saved" style="-fx-font-size: 14; -fx-text-fill: white;"/>
+            <Label fx:id="lblMeals" text="—" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+        
+        <!-- Success Rate Box -->
+        <VBox style="-fx-background-color: #9b59b6; -fx-background-radius: 10; -fx-padding: 20; -fx-min-width: 180;" alignment="CENTER">
+            <Label text="Success Rate" style="-fx-font-size: 14; -fx-text-fill: white;"/>
+            <Label fx:id="lblRate" text="—" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Top Donors Section -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20;">
+        <Label text="🏆 Top Donors (by donation count)" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <VBox fx:id="topDonorsBox" spacing="6">
+            <Label fx:id="lblTopDonor1" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            <Label fx:id="lblTopDonor2" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            <Label fx:id="lblTopDonor3" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            <Label fx:id="lblTopDonor4" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            <Label fx:id="lblTopDonor5" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+        </VBox>
+    </VBox>
+
+    <!-- Top Driver Section -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20;">
+        <Label text="🚚 Top Driver (by completed deliveries)" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <VBox fx:id="topDriverBox" spacing="6">
+            <HBox spacing="10">
+                <Label text="Driver:" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                <Label fx:id="lblTopDriverName" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Deliveries:" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                <Label fx:id="lblTopDriverDeliveries" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Vehicle:" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                <Label fx:id="lblTopDriverVehicle" text="—" style="-fx-font-size: 13; -fx-text-fill: #34495e;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <!-- Error -->
+    <Label fx:id="lblError" text="" wrapText="true"
+           style="-fx-text-fill: #e74c3c; -fx-font-size: 12;"/>
+</VBox>

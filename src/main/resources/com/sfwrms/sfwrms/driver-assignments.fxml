@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sfwrms.sfwrms.DriverAssignmentsController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12"
+              style="-fx-background-color: #7d3c98; -fx-padding: 14 20 14 20;">
+            <Label fx:id="lblTitle" text="Driver Assignment"
+                   style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Refresh" onAction="#handleRefresh"
+                    prefHeight="34"
+                    style="-fx-background-color: white; -fx-text-fill: #7d3c98;
+                           -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+            <Button fx:id="btnBack" text="Back" onAction="#handleBack"
+                    prefHeight="34"
+                    style="-fx-background-color: white; -fx-text-fill: #7d3c98;
+                           -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <!-- Single-assignment card view -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 40;">
+
+            <!-- No-assignment placeholder (shown when no current assignment) -->
+            <VBox fx:id="noAssignmentBox" alignment="CENTER" spacing="12" visible="true">
+                <Label text="📭" style="-fx-font-size: 48;"/>
+                <Label fx:id="lblNoAssignment" text="No assignment available for this action."
+                       style="-fx-font-size: 16; -fx-text-fill: #7f8c8d; -fx-font-weight: bold;"/>
+            </VBox>
+
+            <!-- Assignment card (shown when there is an active assignment) -->
+            <VBox fx:id="assignmentCard" alignment="CENTER" spacing="0" visible="false" managed="false"
+                  maxWidth="600"
+                  style="-fx-background-color: white; -fx-background-radius: 16;
+                         -fx-border-color: #ddd; -fx-border-radius: 16; -fx-border-width: 1.5;">
+
+                <!-- Card header -->
+                <HBox fx:id="cardHeader" alignment="CENTER" spacing="8"
+                      style="-fx-background-color: #7d3c98; -fx-background-radius: 16 16 0 0; -fx-padding: 16 24 16 24;">
+                    <Label fx:id="lblCardTitle" text="Confirm Pickup"
+                           style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Card body -->
+                <VBox spacing="16" style="-fx-padding: 28 32 28 32;">
+
+                    <!-- Donation info -->
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="🍲" style="-fx-font-size: 24;"/>
+                        <VBox spacing="2">
+                            <Label text="Donation" style="-fx-font-size: 11; -fx-text-fill: #999;"/>
+                            <Label fx:id="lblFoodInfo"
+                                   style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <!-- Donor name -->
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="👤" style="-fx-font-size: 24;"/>
+                        <VBox spacing="2">
+                            <Label text="From Donor" style="-fx-font-size: 11; -fx-text-fill: #999;"/>
+                            <Label fx:id="lblDonorName"
+                                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <!-- Pickup address -->
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="📍" style="-fx-font-size: 24;"/>
+                        <VBox spacing="2">
+                            <Label text="Pickup Address" style="-fx-font-size: 11; -fx-text-fill: #999;"/>
+                            <Label fx:id="lblAddress" wrapText="true"
+                                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator/>
+
+                    <!-- Expiry -->
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="⏰" style="-fx-font-size: 24;"/>
+                        <VBox spacing="2">
+                            <Label text="Expires At" style="-fx-font-size: 11; -fx-text-fill: #999;"/>
+                            <Label fx:id="lblExpiry"
+                                   style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                        </VBox>
+                    </HBox>
+
+                </VBox>
+
+                <!-- Action button -->
+                <VBox alignment="CENTER" style="-fx-padding: 0 32 24 32;">
+                    <Button fx:id="btnAction" text="Confirm Pickup" onAction="#handleAction"
+                            prefWidth="400" prefHeight="48"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                                   -fx-font-weight: bold; -fx-font-size: 15;
+                                   -fx-background-radius: 8; -fx-cursor: hand;"/>
+                </VBox>
+
+                <!-- Status feedback -->
+                <HBox alignment="CENTER" style="-fx-padding: 0 0 16 0;">
+                    <Label fx:id="lblStatus" text=""
+                           style="-fx-text-fill: #27ae60; -fx-font-size: 13; -fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </center>
+</BorderPane>

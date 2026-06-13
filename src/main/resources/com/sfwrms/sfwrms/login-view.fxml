@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.sfwrms.sfwrms.LoginController"
+      alignment="CENTER" spacing="13"
+      style="-fx-background-color: #f0f7f0; -fx-padding: 44;">
+
+    <fx:define><ToggleGroup fx:id="roleGroup"/></fx:define>
+
+    <Label text="SFWRMS"
+           style="-fx-font-size: 30; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+    <Label text="Surplus Food Waste Reduction Management System"
+           wrapText="true" alignment="CENTER" maxWidth="360"
+           style="-fx-font-size: 12; -fx-text-fill: #555;"/>
+    <Separator prefWidth="340"/>
+
+    <!-- Role selection -->
+    <HBox alignment="CENTER" spacing="20">
+        <Label text="Login as:" style="-fx-font-size: 13; -fx-font-weight: bold;"/>
+        <RadioButton fx:id="rbDonor"  text="Donor"            selected="true"
+                     toggleGroup="$roleGroup" onAction="#handleRoleChange"
+                     style="-fx-font-size: 13;"/>
+        <RadioButton fx:id="rbNGORep" text="NGO Representative"
+                     toggleGroup="$roleGroup" onAction="#handleRoleChange"
+                     style="-fx-font-size: 13;"/>
+        <RadioButton fx:id="rbDriver" text="Driver"
+                     toggleGroup="$roleGroup" onAction="#handleRoleChange"
+                     style="-fx-font-size: 13;"/>
+    </HBox>
+
+    <!-- Email / Phone -->
+    <VBox spacing="4" maxWidth="340">
+        <Label fx:id="lblEmail" text="Email Address"
+               style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <TextField fx:id="tfEmail" promptText="you@example.com"
+                   prefWidth="340" prefHeight="36"
+                   style="-fx-font-size: 13; -fx-background-radius: 5;"/>
+    </VBox>
+
+    <!-- Password -->
+    <VBox spacing="4" maxWidth="340">
+        <Label text="Password"
+               style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+        <PasswordField fx:id="pfPassword" promptText="••••••••"
+                       prefWidth="340" prefHeight="36"
+                       style="-fx-font-size: 13; -fx-background-radius: 5;"/>
+    </VBox>
+
+    <Button fx:id="btnLogin" text="Login" onAction="#handleLogin"
+            prefWidth="340" prefHeight="42"
+            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14;
+                   -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+
+    <Label fx:id="lblError" text="" wrapText="true" maxWidth="340"
+           style="-fx-text-fill: #e74c3c; -fx-font-size: 12;"/>
+
+    <padding><Insets top="8"/></padding>
+</VBox>

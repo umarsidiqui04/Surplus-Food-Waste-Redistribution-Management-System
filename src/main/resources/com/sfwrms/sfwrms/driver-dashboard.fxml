@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sfwrms.sfwrms.DriverDashboardController"
+            style="-fx-background-color: #f5eef8;">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="16"
+              style="-fx-background-color: #7d3c98; -fx-padding: 14 20 14 20;">
+            <Label text="SFWRMS — Driver Dashboard"
+                   style="-fx-text-fill: white; -fx-font-size: 20; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblUserName"
+                   style="-fx-text-fill: #d7bde2; -fx-font-size: 14;"/>
+            <Button fx:id="btnLogout" text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: white; -fx-text-fill: #7d3c98;
+                           -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <!-- Hub Buttons — 4 steps in order -->
+    <center>
+        <VBox alignment="CENTER" spacing="28" style="-fx-padding: 40;">
+            <Label text="Driver Operations — Follow the steps in order"
+                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <HBox alignment="CENTER" spacing="30">
+                <!-- Step 1: Notifications -->
+                <VBox alignment="CENTER" spacing="6" prefWidth="220" prefHeight="190"
+                      style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #e67e22; -fx-border-radius: 12; -fx-border-width: 2;
+                             -fx-padding: 20; -fx-cursor: hand;"
+                      onMouseClicked="#handleViewNotifications">
+                    <Label text="1" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;
+                                          -fx-background-color: #e67e22; -fx-padding: 2 10 2 10; -fx-background-radius: 12;"/>
+                    <Label text="Notifications" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #e67e22;"/>
+                    <Label fx:id="lblNotifBadge"
+                           style="-fx-font-size: 13; -fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+                </VBox>
+
+                <!-- Step 2: Accept Assignment -->
+                <VBox alignment="CENTER" spacing="6" prefWidth="220" prefHeight="190"
+                      style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #2980b9; -fx-border-radius: 12; -fx-border-width: 2;
+                             -fx-padding: 20; -fx-cursor: hand;"
+                      onMouseClicked="#handleAcceptAssignment">
+                    <Label text="2" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;
+                                          -fx-background-color: #2980b9; -fx-padding: 2 10 2 10; -fx-background-radius: 12;"/>
+                    <Label text="Accept Assignment" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+                </VBox>
+
+                <!-- Step 3: Mark Pickup -->
+                <VBox alignment="CENTER" spacing="6" prefWidth="220" prefHeight="190"
+                      style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #8e44ad; -fx-border-radius: 12; -fx-border-width: 2;
+                             -fx-padding: 20; -fx-cursor: hand;"
+                      onMouseClicked="#handleMarkPickedUp">
+                    <Label text="3" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;
+                                          -fx-background-color: #8e44ad; -fx-padding: 2 10 2 10; -fx-background-radius: 12;"/>
+                    <Label text="Mark Pickup" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #8e44ad;"/>
+                </VBox>
+
+                <!-- Step 4: Confirm Delivery -->
+                <VBox alignment="CENTER" spacing="6" prefWidth="220" prefHeight="190"
+                      style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-border-color: #27ae60; -fx-border-radius: 12; -fx-border-width: 2;
+                             -fx-padding: 20; -fx-cursor: hand;"
+                      onMouseClicked="#handleConfirmDelivery">
+                    <Label text="4" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: white;
+                                          -fx-background-color: #27ae60; -fx-padding: 2 10 2 10; -fx-background-radius: 12;"/>
+                    <Label text="Confirm Delivery" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

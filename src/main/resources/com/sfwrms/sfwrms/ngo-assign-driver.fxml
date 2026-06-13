@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sfwrms.sfwrms.NGOAssignDriverController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Header with Assign button in top-right -->
+    <top>
+        <VBox>
+            <HBox alignment="CENTER_LEFT" spacing="12"
+                  style="-fx-background-color: #1a5276; -fx-padding: 14 20 14 20;">
+                <Label text="Assign Driver to Pickup"
+                       style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnAssign" text="Assign Driver" onAction="#handleAssignDriver"
+                        prefHeight="34"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                               -fx-font-weight: bold; -fx-font-size: 13;
+                               -fx-background-radius: 5; -fx-cursor: hand;"/>
+                <Button text="Refresh" onAction="#handleRefresh"
+                        prefHeight="34"
+                        style="-fx-background-color: white; -fx-text-fill: #1a5276;
+                               -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                <Button fx:id="btnBack" text="Back" onAction="#handleBack"
+                        prefHeight="34"
+                        style="-fx-background-color: white; -fx-text-fill: #1a5276;
+                               -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: #d5f5e3; -fx-padding: 6 20 6 20;">
+                <Label fx:id="lblAssignmentInfo"
+                       text="Step 1: Select an assignment — Step 2: Select a driver — Step 3: Click Assign Driver"
+                       style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblStatus" style="-fx-text-fill: #555; -fx-font-size: 12;"
+                       wrapText="true" maxWidth="400"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="8" style="-fx-padding: 10 16 16 16;">
+            <!-- Assignments needing driver -->
+            <Label text="Assignments Needing Driver:" style="-fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #1a5276;"/>
+            <TableView fx:id="tblAssignments" prefHeight="220" VBox.vgrow="SOMETIMES"
+                       style="-fx-background-color: white; -fx-background-radius: 6;">
+                <columns>
+                    <TableColumn fx:id="colId"            text="#"              prefWidth="55"/>
+                    <TableColumn fx:id="colFoodType"       text="Food Type"      prefWidth="150"/>
+                    <TableColumn fx:id="colQty"            text="Qty"          prefWidth="80"/>
+                    <TableColumn fx:id="colLocation"       text="Pickup Location" prefWidth="200"/>
+                    <TableColumn fx:id="colExpiry"         text="Expires"        prefWidth="145"/>
+                    <TableColumn fx:id="colCurrentDriver"  text="Current Driver"  prefWidth="150"/>
+                </columns>
+                <placeholder><Label text="No assignments pending driver assignment."/></placeholder>
+            </TableView>
+
+            <!-- Available drivers -->
+            <Label text="Available Drivers:" style="-fx-font-weight: bold; -fx-font-size: 13; -fx-text-fill: #7d3c98;"/>
+            <TableView fx:id="tblDrivers" prefHeight="200" VBox.vgrow="SOMETIMES"
+                       style="-fx-background-color: white; -fx-background-radius: 6;">
+                <columns>
+                    <TableColumn fx:id="colDriverId"   text="ID"       prefWidth="55"/>
+                    <TableColumn fx:id="colDriverName" text="Name"     prefWidth="180"/>
+                    <TableColumn fx:id="colVehicle"    text="Vehicle"  prefWidth="250"/>
+                    <TableColumn fx:id="colPhone"      text="Phone"    prefWidth="150"/>
+                </columns>
+                <placeholder><Label text="No available drivers."/></placeholder>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

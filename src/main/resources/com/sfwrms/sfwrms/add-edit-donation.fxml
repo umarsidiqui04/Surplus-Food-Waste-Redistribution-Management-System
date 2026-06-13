@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.sfwrms.sfwrms.AddEditDonationController"
+            style="-fx-background-color: #f0f7f0;">
+
+    <!-- Header -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="16"
+              style="-fx-background-color: #27ae60; -fx-padding: 14 20 14 20;">
+            <Label fx:id="lblTitle" text="Add New Donation"
+                   style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnCancel" text="← Cancel" onAction="#handleCancel"
+                    style="-fx-background-color: white; -fx-text-fill: #27ae60;
+                           -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <!-- Form -->
+    <center>
+        <VBox alignment="TOP_CENTER" style="-fx-padding: 40;">
+            <VBox spacing="18" maxWidth="520" style="-fx-background-color: white; -fx-background-radius: 12;
+                             -fx-padding: 36; -fx-border-color: #ddd; -fx-border-radius: 12;">
+
+                <!-- Food Type -->
+                <VBox spacing="4">
+                    <Label text="Food Type" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <TextField fx:id="tfFoodType" promptText="e.g. Rice, Bread, Cooked Meals"
+                               prefHeight="36" style="-fx-background-radius: 5; -fx-font-size: 13;"/>
+                </VBox>
+
+                <!-- Quantity + Unit -->
+                <VBox spacing="4">
+                    <Label text="Quantity" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="tfQuantity" promptText="e.g. 20"
+                                   prefWidth="280" prefHeight="36" style="-fx-background-radius: 5; -fx-font-size: 13;"/>
+                        <ComboBox fx:id="cbUnit" prefWidth="140" prefHeight="36"
+                                  style="-fx-font-size: 13;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Preparation Time -->
+                <VBox spacing="4">
+                    <Label text="Preparation Date &amp; Time (HH:mm)" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <HBox spacing="10">
+                        <DatePicker fx:id="dpPrepDate" prefWidth="240"/>
+                        <TextField fx:id="tfPrepTime" promptText="HH:mm" prefWidth="120" prefHeight="36"
+                                   style="-fx-background-radius: 5; -fx-font-size: 13;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Expiry Time -->
+                <VBox spacing="4">
+                    <Label text="Expiry Date &amp; Time (HH:mm)" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <HBox spacing="10">
+                        <DatePicker fx:id="dpExpiryDate" prefWidth="240"/>
+                        <TextField fx:id="tfExpiryTime" promptText="HH:mm" prefWidth="120" prefHeight="36"
+                                   style="-fx-background-radius: 5; -fx-font-size: 13;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Location -->
+                <VBox spacing="4">
+                    <Label text="Pickup Location" style="-fx-font-weight: bold; -fx-font-size: 13;"/>
+                    <TextField fx:id="tfLocation" promptText="e.g. 42 Main Street, Karachi"
+                               prefHeight="36" style="-fx-background-radius: 5; -fx-font-size: 13;"/>
+                </VBox>
+
+                <!-- Error -->
+                <Label fx:id="lblError" text="" wrapText="true"
+                       style="-fx-text-fill: #e74c3c; -fx-font-size: 12;"/>
+
+                <!-- Submit Button -->
+                <Button fx:id="btnSubmit" text="Submit Donation" onAction="#handleSubmit"
+                        prefWidth="440" prefHeight="42"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;
+                               -fx-font-weight: bold; -fx-font-size: 14; -fx-background-radius: 6; -fx-cursor: hand;"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
