@@ -233,8 +233,8 @@ String password = "your_password";
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/SFWRMS.git
-cd SFWRMS
+git clone https://github.com/umarsidiqui04/Surplus-Food-Waste-Redistribution-Management-System.git
+cd Surplus-Food-Waste-Redistribution-Management-System
 
 # Build the project
 ./gradlew build
